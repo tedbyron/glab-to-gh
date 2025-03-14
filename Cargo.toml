@@ -1,0 +1,39 @@
+[package]
+name = "glab-to-gh"
+description = "Migrate repos from GitLab to GitHub"
+version = "0.1.0"
+edition = "2021"
+default-run = "glab-to-gh"
+
+[[bin]]
+name = "repo-size"
+required-features = ["readable"]
+
+[profile.dev]
+debug = 0
+
+[profile.release]
+codegen-units = 1
+lto = true
+strip = true
+
+[features]
+default = ["dotenv"]
+debug = []
+
+[dependencies]
+anyhow = "1.0.79"
+clap = { version = "4.5.0", features = ["derive", "env"] }
+dotenv = { version = "0.15.7", package = "dotenvy", optional = true }
+gitlab = "0.1608.1"
+ignore = "0.4.22"
+inquire = { version = "0.6.2", default-features = false, features = ["crossterm"] }
+octocrab = { version = "0.34.0", features = ["tracing", "tokio"] }
+readable = { version = "0.16.0", optional = true, default-features = false, features = ["byte"] }
+serde = { version = "1.0.196", features = ["derive"] }
+serde_json = "1.0.113"
+tempfile = "3.10.0"
+tokio = { version = "1.36.0", features = ["macros", "parking_lot", "rt-multi-thread"] }
+tracing = "0.1.40"
+tracing-subscriber = { version = "0.3.18", features = ["env-filter", "parking_lot"] }
+url = { version = "2.5.0", features = ["serde"] }
