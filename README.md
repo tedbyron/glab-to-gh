@@ -53,7 +53,7 @@ Copy all repos from a GitLab group to a GitHub org, and make all repos private:
 
 ```sh
 cargo run -- -sg example-group --to example-org -v private
-#             └source group └target org  └visibility
+#             └source group      └target org     └visibility
 ```
 
 ## Update git origin URLs after migration
